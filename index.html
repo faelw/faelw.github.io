@@ -1,1 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaelW | Data-Driven Lottery Solutions</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0B0E14;
+            --card-bg: #151A23;
+            --accent: #00E676; /* Android Green / Money Green */
+            --accent-glow: rgba(0, 230, 118, 0.4);
+            --text-main: #FFFFFF;
+            --text-muted: #94A3B8;
+            --gradient: linear-gradient(135deg, #00E676 0%, #00B0FF 100%);
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background Effects */
+        .bg-glow {
+            position: fixed;
+            top: -20%;
+            left: -20%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            opacity: 0.2;
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 5%;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--gradient);
+            color: #000;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 230, 118, 0.3);
+        }
+
+        /* Apps Grid */
+        .apps-section {
+            padding: 4rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            color: var(--accent);
+        }
+
+        .card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(0, 230, 118, 0.1);
+            color: var(--accent);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 3rem 0;
+            opacity: 0.5;
+            flex-wrap: wrap;
+        }
+
+        .tech-item {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 3rem 5%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <header>
+        <div class="logo">FaelW<span>.dev</span></div>
+        <a href="mailto:contact@faelw.dev" style="color:white; text-decoration:none;"><i class="far fa-envelope"></i> Contact</a>
+    </header>
+
+    <section class="hero">
+        <h1>Smart Lottery Analytics <br>Powered by AI</h1>
+        <p>Using Python, Machine Learning, and Cloud Data to decode probability. <br>Advanced tools for serious players.</p>
+        <a href="#apps" class="btn-primary">Explore Apps</a>
+    </section>
+
+    <div class="tech-stack">
+        <div class="tech-item"><i class="fab fa-python"></i></div>
+        <div class="tech-item"><i class="fab fa-android"></i></div>
+        <div class="tech-item"><i class="fas fa-brain"></i></div>
+        <div class="tech-item"><i class="fas fa-chart-line"></i></div>
+    </div>
+
+    <section id="apps" class="apps-section">
+        <div class="section-title">My Portfolio</div>
+        
+        <div class="grid">
+            <a href="https://play.google.com/store/apps/details?id=com.westdevs.lotolab" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-flask"></i></div>
+                    <h3>Loto Lab 15</h3>
+                    <p>The definitive tool for Lotofácil analysis. Features AI-driven predictions, pattern recognition, and detailed statistical breakdowns.</p>
+                    <span class="status-badge">Available on Google Play</span>
+                </div>
+            </a>
+
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-flag-usa"></i></div>
+                <h3>USA Lotto Insights</h3>
+                <p>Real-time data for Powerball and Mega Millions. Built with a robust Python backend for accurate drawing history and probability analysis.</p>
+                <span class="status-badge">Coming Soon</span>
+            </div>
+
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-globe-americas"></i></div>
+                <h3>Loto Brasil Master</h3>
+                <p>A comprehensive suite for all major Brazilian lotteries. Gamified experience with advanced filtering capabilities.</p>
+                <span class="status-badge">In Development</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 FaelW Development. All rights reserved.</p>
+        <div style="margin-top: 1rem;">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="/app-ads.txt">app-ads.txt</a>
+        </div>
+    </footer>
+
+</body>
+</html>
