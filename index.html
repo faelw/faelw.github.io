@@ -10,7 +10,7 @@
         :root {
             --bg-color: #0B0E14;
             --card-bg: #151A23;
-            --accent: #00E676; /* Android Green / Money Green */
+            --accent: #00E676; /* Android Green */
             --accent-glow: rgba(0, 230, 118, 0.4);
             --text-main: #FFFFFF;
             --text-muted: #94A3B8;
@@ -128,6 +128,9 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            height: 100%; /* Uniform height */
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
@@ -158,17 +161,29 @@
             color: var(--text-muted);
             font-size: 0.95rem;
             margin-bottom: 1.5rem;
+            flex-grow: 1; /* Pushes badge to bottom */
         }
 
         .status-badge {
             display: inline-block;
             padding: 4px 12px;
-            background: rgba(0, 230, 118, 0.1);
-            color: var(--accent);
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
+            width: fit-content;
+        }
+
+        .status-live {
+            background: rgba(0, 230, 118, 0.15);
+            color: #00E676;
+            border: 1px solid rgba(0, 230, 118, 0.3);
+        }
+
+        .status-dev {
+            background: rgba(255, 171, 0, 0.15);
+            color: #FFAB00;
+            border: 1px solid rgba(255, 171, 0, 0.3);
         }
 
         /* Tech Stack */
@@ -225,7 +240,7 @@
     <section class="hero">
         <h1>Smart Lottery Analytics <br>Powered by AI</h1>
         <p>Using Python, Machine Learning, and Cloud Data to decode probability. <br>Advanced tools for serious players.</p>
-        <a href="#apps" class="btn-primary">Explore Apps</a>
+        <a href="#apps" class="btn-primary">View Portfolio</a>
     </section>
 
     <div class="tech-stack">
@@ -236,30 +251,30 @@
     </div>
 
     <section id="apps" class="apps-section">
-        <div class="section-title">My Portfolio</div>
+        <div class="section-title">My Apps</div>
         
         <div class="grid">
             <a href="https://play.google.com/store/apps/details?id=com.westdevs.lotolab" style="text-decoration: none; color: inherit;">
                 <div class="card">
-                    <div class="card-icon"><i class="fas fa-flask"></i></div>
-                    <h3>Loto Lab 15</h3>
-                    <p>The definitive tool for Lotofácil analysis. Features AI-driven predictions, pattern recognition, and detailed statistical breakdowns.</p>
-                    <span class="status-badge">Available on Google Play</span>
+                    <div class="card-icon"><i class="fas fa-flag-usa"></i></div>
+                    <h3>Loto Lab</h3>
+                    <p>US Lottery Analytics. Real-time data for Powerball and Mega Millions with advanced statistical insights.</p>
+                    <span class="status-badge status-live">Available on Google Play</span>
                 </div>
             </a>
 
             <div class="card">
-                <div class="card-icon"><i class="fas fa-flag-usa"></i></div>
-                <h3>USA Lotto Insights</h3>
-                <p>Real-time data for Powerball and Mega Millions. Built with a robust Python backend for accurate drawing history and probability analysis.</p>
-                <span class="status-badge">Coming Soon</span>
+                <div class="card-icon"><i class="fas fa-flask"></i></div>
+                <h3>Loto Lab 15</h3>
+                <p>Specialized tool for Lotofácil. Using deep learning to analyze patterns in 15-number games.</p>
+                <span class="status-badge status-dev">In Development</span>
             </div>
 
             <div class="card">
                 <div class="card-icon"><i class="fas fa-globe-americas"></i></div>
-                <h3>Loto Brasil Master</h3>
-                <p>A comprehensive suite for all major Brazilian lotteries. Gamified experience with advanced filtering capabilities.</p>
-                <span class="status-badge">In Development</span>
+                <h3>Loto Lab Brasil</h3>
+                <p>The complete suite for all major Brazilian lotteries. A gamified hub for Mega-Sena, Quina, and more.</p>
+                <span class="status-badge status-dev">In Development</span>
             </div>
         </div>
     </section>
@@ -268,7 +283,6 @@
         <p>&copy; 2026 FaelW Development. All rights reserved.</p>
         <div style="margin-top: 1rem;">
             <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
             <a href="/app-ads.txt">app-ads.txt</a>
         </div>
     </footer>
