@@ -1,169 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FaelW | Data-Driven Solutions</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #0B0E14;
-            --card-bg: #151A23;
-            --accent: #00E676; 
-            --accent-glow: rgba(0, 230, 118, 0.4);
-            --text-main: #FFFFFF;
-            --text-muted: #94A3B8;
-            --gradient: linear-gradient(135deg, #00E676 0%, #00B0FF 100%);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<title>FaelW | AI Mobile Ecosystem</title>
 
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-        .bg-glow {
-            position: fixed;
-            top: -20%;
-            left: -20%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            opacity: 0.2;
-            z-index: -1;
-            filter: blur(80px);
-        }
+<style>
+:root {
+    --bg: #07090F;
+    --card: rgba(255,255,255,0.04);
+    --border: rgba(255,255,255,0.08);
+    --accent: #00E676;
+    --accent2: #00B0FF;
+    --text: #FFFFFF;
+    --muted: #94A3B8;
+    --gradient: linear-gradient(135deg, #00E676, #00B0FF);
+}
 
-        header { padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: -1px; }
-        .logo span { color: var(--accent); }
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
 
-        .hero { padding: 4rem 5%; text-align: center; max-width: 800px; margin: 0 auto; }
-        .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { color: var(--text-muted); font-size: 1.2rem; margin-bottom: 2.5rem; }
+body{
+    font-family:'Outfit',sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x:hidden;
+}
 
-        .btn-primary { display: inline-block; padding: 1rem 2.5rem; background: var(--gradient); color: #000; font-weight: 700; text-decoration: none; border-radius: 50px; transition: transform 0.2s, box-shadow 0.2s; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 230, 118, 0.3); }
+/* BACKGROUND FX */
+.bg{
+    position:fixed;
+    width:800px;
+    height:800px;
+    background: radial-gradient(circle, rgba(0,230,118,0.15), transparent);
+    top:-200px;
+    left:-200px;
+    filter: blur(120px);
+    z-index:-1;
+}
 
-        .apps-section { padding: 4rem 5%; }
-        .section-title { text-align: center; margin-bottom: 3rem; font-size: 2rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+/* HEADER */
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    backdrop-filter: blur(10px);
+    background: rgba(10,10,15,0.5);
+    border-bottom:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.2rem 5%;
+    z-index:100;
+}
 
-        .card { 
-            background: var(--card-bg); 
-            border: 1px solid rgba(255,255,255,0.05); 
-            border-radius: 20px; 
-            padding: 2rem; 
-            transition: all 0.3s ease; 
-            height: 100%; 
-            display: flex; 
-            flex-direction: column; 
-            text-decoration: none; 
-            color: inherit;
-        }
+.logo{
+    font-weight:800;
+    font-size:1.4rem;
+}
 
-        .card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .card-icon { font-size: 2rem; margin-bottom: 1.5rem; background: rgba(255,255,255,0.1); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 15px; color: var(--accent); }
-        .card h3 { margin-bottom: 0.5rem; font-size: 1.5rem; }
-        .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
+.logo span{
+    color:var(--accent);
+}
 
-        .status-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; width: fit-content; }
-        .status-live { background: rgba(0, 230, 118, 0.15); color: #00E676; border: 1px solid rgba(0, 230, 118, 0.3); }
-        .status-dev { background: rgba(255, 171, 0, 0.15); color: #FFAB00; border: 1px solid rgba(255, 171, 0, 0.3); }
+header a{
+    color:white;
+    text-decoration:none;
+    opacity:0.8;
+    transition:.3s;
+}
+header a:hover{
+    opacity:1;
+    color:var(--accent);
+}
 
-        .tech-stack { display: flex; justify-content: center; gap: 2rem; padding: 3rem 0; opacity: 0.5; flex-wrap: wrap; }
-        .tech-item { font-size: 1.5rem; color: var(--text-muted); }
+/* HERO */
+.hero{
+    padding-top:120px;
+    text-align:center;
+    max-width:900px;
+    margin:auto;
+}
 
-        footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 3rem 5%; text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-top: 2rem; }
-        footer a { color: var(--text-muted); text-decoration: none; margin: 0 10px; transition: color 0.2s; }
-        footer a:hover { color: var(--accent); }
+.hero h1{
+    font-size:3.8rem;
+    font-weight:800;
+    background: var(--gradient);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin-bottom:1.5rem;
+}
 
-        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .grid { grid-template-columns: 1fr; } }
-    </style>
+.hero p{
+    color:var(--muted);
+    font-size:1.2rem;
+    margin-bottom:2rem;
+}
+
+.btn{
+    display:inline-block;
+    padding:1rem 2.5rem;
+    border-radius:50px;
+    background:var(--gradient);
+    color:#000;
+    font-weight:700;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 30px rgba(0,230,118,0.4);
+}
+
+/* TECH STACK */
+.tech{
+    display:flex;
+    justify-content:center;
+    gap:2rem;
+    margin:3rem 0;
+    opacity:.5;
+    flex-wrap:wrap;
+}
+
+.tech i{
+    font-size:1.5rem;
+}
+
+/* SECTION */
+.section{
+    padding:4rem 5%;
+}
+
+.section h2{
+    text-align:center;
+    font-size:2.2rem;
+    margin-bottom:1rem;
+}
+
+.section p{
+    text-align:center;
+    color:var(--muted);
+    margin-bottom:3rem;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:2rem;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* CARD */
+.card{
+    background: var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:2rem;
+    backdrop-filter: blur(10px);
+    transition:.4s;
+    text-decoration:none;
+    color:inherit;
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(120deg, transparent, rgba(0,230,118,0.2), transparent);
+    opacity:0;
+    transition:.4s;
+}
+
+.card:hover::before{
+    opacity:1;
+}
+
+.card:hover{
+    transform:translateY(-8px) scale(1.02);
+    border-color:var(--accent);
+    box-shadow:0 20px 40px rgba(0,0,0,0.6);
+}
+
+.icon{
+    font-size:1.8rem;
+    margin-bottom:1rem;
+    color:var(--accent);
+}
+
+.card h3{
+    margin-bottom:.5rem;
+}
+
+.card p{
+    color:var(--muted);
+    font-size:.95rem;
+    margin-bottom:1.5rem;
+}
+
+/* BADGE */
+.badge{
+    display:inline-block;
+    padding:5px 12px;
+    border-radius:20px;
+    font-size:.7rem;
+    font-weight:700;
+}
+
+.live{
+    background:rgba(0,230,118,0.15);
+    color:#00E676;
+}
+
+.dev{
+    background:rgba(255,171,0,0.15);
+    color:#FFAB00;
+}
+
+/* FOOTER */
+footer{
+    border-top:1px solid var(--border);
+    padding:2rem;
+    text-align:center;
+    color:var(--muted);
+    margin-top:3rem;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .hero h1{
+        font-size:2.5rem;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <div class="bg-glow"></div>
+<div class="bg"></div>
 
-    <header>
-        <div class="logo">FaelW<span>.dev</span></div>
-        <a href="mailto:contact@faelw.dev" style="color:white; text-decoration:none;"><i class="far fa-envelope"></i> Contact</a>
-    </header>
+<header>
+    <div class="logo">FaelW<span>.dev</span></div>
+    <a href="mailto:contact@faelw.dev"><i class="fa fa-envelope"></i></a>
+</header>
 
-    <section class="hero">
-        <h1>Smart Mobile Solutions <br>Powered by AI</h1>
-        <p>Using Flutter, Python, and Machine Learning to build next-gen gamified utilities. <br>From probability analytics to lifestyle management.</p>
-        <a href="#apps" class="btn-primary">View Portfolio</a>
-    </section>
+<section class="hero">
+    <h1>AI-Powered Mobile Ecosystem</h1>
+    <p>Building next-gen applications with data intelligence, automation and immersive user experiences.</p>
+    <a href="#apps" class="btn">Explore Apps</a>
+</section>
 
-    <div class="tech-stack">
-        <div class="tech-item"><i class="fab fa-python"></i></div>
-        <div class="tech-item"><i class="fab fa-android"></i></div>
-        <div class="tech-item"><i class="fas fa-brain"></i></div>
-        <div class="tech-item"><i class="fas fa-chart-line"></i></div>
-        <div class="tech-item"><i class="fas fa-mobile-alt"></i></div>
-    </div>
+<div class="tech">
+    <i class="fab fa-python"></i>
+    <i class="fab fa-android"></i>
+    <i class="fas fa-brain"></i>
+    <i class="fas fa-chart-line"></i>
+    <i class="fas fa-mobile-alt"></i>
+</div>
 
-<section id="apps" class="apps-section">
-    <div class="section-header">
-        <h2>My Universe</h2>
-        <p>Explorando a intersecção entre Dados, IA e Experiência do Usuário.</p>
-    </div>
-    
-<section id="apps" class="apps-section">
-    <div class="section-title">My Apps</div>
-    
+<section id="apps" class="section">
+    <h2>My Apps</h2>
+    <p>Where data meets intelligence and experience</p>
+
     <div class="grid">
+
         <div class="card">
-            <div class="card-icon"><i class="fas fa-microchip"></i></div>
+            <div class="icon"><i class="fas fa-microchip"></i></div>
             <h3>WD Pro</h3>
-            <p>Next-gen predictive analytics platform. Engineered for deep data processing and delivering real-time strategic insights for complex datasets.</p>
-            <span class="status-badge status-dev">In Development</span>
+            <p>Advanced predictive engine designed for high-level analytics and decision-making systems.</p>
+            <span class="badge dev">In Development</span>
         </div>
 
-        <a href="https://play.google.com/store/apps/details?id=com.westdevs.lotolab" class="card">
-            <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+        <a href="#" class="card">
+            <div class="icon"><i class="fas fa-chart-line"></i></div>
             <h3>LotoLab USA</h3>
-            <p>Advanced US Lottery Analytics for Powerball and Mega Millions. Features real-time data integration and a gamified user reward system.</p>
-            <span class="status-badge status-live">Available on Google Play</span>
+            <p>Real-time lottery analytics with gamified prediction and probability engine.</p>
+            <span class="badge live">Live</span>
         </a>
 
         <div class="card">
-            <div class="card-icon"><i class="fas fa-hand-sparkles"></i></div>
+            <div class="icon"><i class="fas fa-hand-sparkles"></i></div>
             <h3>Eridanus Oracle</h3>
-            <p>An immersive mystical journey. Explore destiny and relationship readings with 78 beautifully animated cards and custom visual themes.</p>
-            <span class="status-badge status-live">Available on Google Play</span>
+            <p>Immersive tarot experience powered by visuals and symbolic interpretation.</p>
+            <span class="badge live">Live</span>
         </div>
 
         <div class="card">
-            <div class="card-icon"><i class="fas fa-vest"></i></div>
-            <h3>Amaya Wardrobe
-            </h3>
-            <p>AI-Powered Digital Wardrobe. Catalog your clothing and receive daily outfit suggestions based on style, color theory, and weather.</p>
-            <span class="status-badge status-live">Available on Google Play</span>
+            <div class="icon"><i class="fas fa-shirt"></i></div>
+            <h3>Amaya Wardrobe</h3>
+            <p>AI wardrobe assistant with outfit generation based on style and weather.</p>
+            <span class="badge live">Live</span>
         </div>
 
         <div class="card">
-            <div class="card-icon"><i class="fas fa-database"></i></div>
+            <div class="icon"><i class="fas fa-database"></i></div>
             <h3>LotoLab Brasil</h3>
-            <p>The ultimate hub for Brazilian lotteries. Complete probability engine for Mega-Sena, Quina, and more in a unified dashboard.</p>
-            <span class="status-badge status-dev">Planning Phase</span>
+            <p>Complete Brazilian lottery intelligence platform with deep probability engine.</p>
+            <span class="badge live">Live</span>
         </div>
+
     </div>
 </section>
 
-    <footer>
-        <p>&copy; 2026 FaelW Development. All rights reserved.</p>
-        <div style="margin-top: 1rem;">
-            <a href="#">Privacy Policy</a>
-            <a href="/app-ads.txt">app-ads.txt</a>
-        </div>
-    </footer>
+<footer>
+    <p>© 2026 FaelW Development</p>
+</footer>
 
 </body>
 </html>
